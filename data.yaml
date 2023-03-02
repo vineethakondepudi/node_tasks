@@ -1,0 +1,11 @@
+/**
+ * @swagger
+ * /:
+ *  get:
+ *      summary: This api is used to check if get method is working or not
+ *      description: This api is used to check if get method is working or not
+ *      responses: 
+ *          200:
+ *              description: To test get method
+ */
+
