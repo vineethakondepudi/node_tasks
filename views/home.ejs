@@ -7,7 +7,7 @@
 <button onclick="sendMessage()">Send Message</button>
 <h2></h2>
 <script>
-const socket=io('http://172.17.12.39:4000')
+const socket=io('http://172.17.12.39:4200')
 socket.on('connection')
 socket.on('message',(data)=>
 {

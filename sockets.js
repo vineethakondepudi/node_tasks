@@ -1,37 +1,44 @@
-// const socket = new WebSocket("ws://localhost:3000");
+//Socket_task1
+// var app = require('express' )();
+// var http = require( 'http' ).createServer( app );
+// var io = require( 'socket.io')( http );
 
-// socket.onopen = () => {
-//   socket.send("Hello!");
-// };
+// const PORT = 3660;
 
-// socket.onmessage = (data) => {
-//   console.log(data);
-// };
+// app.get( '/', function( req, res ) {
+// res.sendFile( __dirname + '/public/index.html' );
+// });
+
+// http.listen( PORT, function() {
+// console.log( 'listening on *:' + PORT );
+// });
+
+// io.on( 'connection', function( socket ) {
+// console.log('a user has connected!' );
+// });
 
 
-// const express = require('express'); // using express
-// const socketIO = require('socket.io');
-// const http = require('http')
-// const port = process.env.PORT||6000 // setting the port
-// let app = express();
-// let server = http.createServer(app)
-// let io = socketIO(server)
- 
-// server.listen(port);
-var app = require('express' )();
-var http = require( 'http' ).createServer( app );
-var io = require( 'socket.io')( http );
 
-const PORT = 3000;
+//Socket_task2
 
-app.get( '/', function( req, res ) {
-res.sendFile( __dirname + '/public/index.html' );
-});
+// const socketio=require('socket.io')(server, {cors:{origin:"*"}})
 
-http.listen( PORT, function() {
-console.log( 'listening on *:' + PORT );
-});
+// app.set('view engine','ejs')
 
-io.on( 'connection', function( socket ) {
-console.log('a user has connected!' );
-});
+// app.get('/home',(req,res)=>
+// {
+// res.render('home')
+// })
+
+// server.listen(4200,()=>
+// {
+// console.log('server running')
+// })
+// socketio.on('connection',(socket)=>
+// {
+// console.log('user connected'+socket.id)
+// socket.on('message',(data)=>
+// {
+// socket.broadcast.emit('message',data)
+// })
+// }) 

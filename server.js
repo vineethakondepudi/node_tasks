@@ -51,32 +51,7 @@
 // io.on('connection', () => { /* … */ });
 // server.listen(3000);
 
-// const express=require('express')
-// const app=express()
-// const server=require('http').createServer(app)
-// // const port=process.env.PORT||3000
 
-// const socketio=require('socket.io')(server, {cors:{origin:"*"}})
-
-// app.set('view engine','ejs')
-
-// app.get('/home',(req,res)=>
-// {
-// res.render('home')
-// })
-
-// server.listen(4000,()=>
-// {
-// console.log('server running')
-// })
-// socketio.on('connection',(socket)=>
-// {
-// console.log('user connected'+socket.id)
-// socket.on('message',(data)=>
-// {
-// socket.broadcast.emit('message',data)
-// })
-// })
 
 // var data = [
 //   {
@@ -157,47 +132,47 @@
 
 
 //nodejs-express-sequelize-mysql
- const express = require("express");
-const cors = require("cors");
+//  const express = require("express");
+// const cors = require("cors");
 
-const app = express();
+// const app = express();
 
-var corsOptions = {
-  origin: "http://localhost:8081"
-};
+// var corsOptions = {
+//   origin: "http://localhost:8081"
+// };
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 
-// parse requests of content-type - application/json
-app.use(express.json());
+// // parse requests of content-type - application/json
+// app.use(express.json());
 
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(express.urlencoded({ extended: true }));
+// // parse requests of content-type - application/x-www-form-urlencoded
+// app.use(express.urlencoded({ extended: true }));
 
-const db = require("./app/models/index");
+// const db = require("./app/models/index");
 
-db.sequelize.sync()
-  .then(() => {
-    console.log("Synced db.");
-  })
-  .catch((err) => {
-    console.log("Failed to sync db: " + err.message);
-  });
+// db.sequelize.sync()
+//   .then(() => {
+//     console.log("Synced db.");
+//   })
+//   .catch((err) => {
+//     console.log("Failed to sync db: " + err.message);
+//   });
 
-// // drop the table if it already exists
-// db.sequelize.sync({ force: true }).then(() => {
-//   console.log("Drop and re-sync db.");
+// // // drop the table if it already exists
+// // db.sequelize.sync({ force: true }).then(() => {
+// //   console.log("Drop and re-sync db.");
+// // });
+
+// // simple route
+// app.get("/", (req, res) => {
+//   res.json({ message: "Welcome to bezkoder application." });
 // });
 
-// simple route
-app.get("/", (req, res) => {
-  res.json({ message: "Welcome to bezkoder application." });
-});
+// require("./app/routes/turorial.routes")(app);
 
-require("./app/routes/turorial.routes")(app);
-
-// set port, listen for requests
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}.`);
-});
+// // set port, listen for requests
+// const PORT = process.env.PORT || 8080;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}.`);
+// });
