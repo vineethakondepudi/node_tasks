@@ -32,19 +32,19 @@ fs.readFile('text1.txt','utf-8',(err,data)=>{
     console.log(data);
 
     //Superagent
-    superagent.get(`https://api.nationalize.io?name=${data}`,(err,data1)=>{
-        if(err){
-            console.log(err);
-        }
-        var data2 = data1._body.country[0].country_id;
+    // superagent.get(`https://api.nationalize.io?name=${data}`,(err,data1)=>{
+    //     if(err){
+    //         console.log(err);
+    //     }
+    //     var data2 = data1._body.country[0].country_id;
 
 
         //WriteFile
-        fs.writeFile('text2.txt',`${data2}`,(err)=>{
+        fs.writeFile('text2.txt',`${data}`,(err)=>{
             if(err){
                 console.log(err);
             }
             console.log('Success');
         })
     })
-})
+// })
