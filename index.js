@@ -62,230 +62,230 @@
 // connection.end();
 
 // Express
-// var express=require('express');
-// var app=express();
-// const joi = require('joi');
-// const sweggerJsDoc = require('swagger-jsdoc');
-// const sweggerUi = require('swagger-ui-express');
-// const { response } = require('./app');
-// const yaml = require('./data.yaml')
-// app.use(express.json())
-// const schema=joi.object({
-//     id:joi.number().integer().min(1),
-//     name:joi.string().max(20).message('hiiiiiiiii').required(),
-//     age:joi.number().integer().min(10),
-//     language:joi.required()
-//     })
+var express=require('express');
+var app=express();
+const joi = require('joi');
+const sweggerJsDoc = require('swagger-jsdoc');
+const sweggerUi = require('swagger-ui-express');
+const { response } = require('./app');
+const yaml = require('./data.yaml')
+app.use(express.json())
+const schema=joi.object({
+    id:joi.number().integer().min(1),
+    name:joi.string().max(20).message('hiiiiiiiii').required(),
+    age:joi.number().integer().min(10),
+    language:joi.required()
+    })
 
-// const options = {
-//     definition:{
-//         openapi:'3.0.0',
-//         info:{
-//             title:'Node JS API Project',
-//             version:'1.0.0'
-//         },
-//         servers:[
-//             {
-//              url: 'http://localhost:8080/'
-//             }
-//         ]
-//     },
-//     apis:['./index.js']
-// }
+const options = {
+    definition:{
+        openapi:'3.0.0',
+        info:{
+            title:'Node JS API Project',
+            version:'1.0.0'
+        },
+        servers:[
+            {
+             url: 'http://localhost:8080/'
+            }
+        ]
+    },
+    apis:['./index.js']
+}
 
-// const sweggerSpec = sweggerJsDoc(options)
-// app.use('/api-docs', sweggerUi.serve, sweggerUi.setup(sweggerSpec))
-
-// // /**
-// //  * @swagger
-// //  * /:
-// //  *  get:
-// //  *      summary: This api is used to check if get method is working or not
-// //  *      description: This api is used to check if get method is working or not
-// //  *      responses: 
-// //  *          200:
-// //  *              description: To test get method
-// //  */
-
-// app.get('/',(req,res)=>{
-//    res.send(`Hello vinnu`)
-// });
-// var data=require('./express/data')
-
+const sweggerSpec = sweggerJsDoc(options)
+app.use('/api-docs', sweggerUi.serve, sweggerUi.setup(sweggerSpec))
 
 // /**
 //  * @swagger
-//  *  components:
-//  *      schemas:
-//  *          Book:
-//  *              type: object
-//  *              properties:
-//  *                  id:
-//  *                      type: integer
-//  *                  name:
-//  *                      type: string
-//  *                  age:
-//  *                      type: integer
-//  *                  language:
-//  *                      type: array
-//  */
-
-// /**
-//  * @swagger
-//  * /api:
+//  * /:
 //  *  get:
-//  *      summary: To get the data from mysql 
-//  *      description: This api is used to fetch data from mysql
+//  *      summary: This api is used to check if get method is working or not
+//  *      description: This api is used to check if get method is working or not
 //  *      responses: 
 //  *          200:
-//  *              description: This api is used to fetch data from mysql
-//  *              content: 
-//  *                  application/json:
-//  *                      schema:
-//  *                          type: array
-//  *                          items: 
-//  *                              $ref: '#components/schemas/Book'
+//  *              description: To test get method
 //  */
-// app.get('/api',(req,res)=>{
-//     res.send(data);
-//     // var traininObj={
-//     //     order_Id:10,
-//     //     Amount:200,
-//     //     active:true
-//     // }
-//     // res.send(traininObj)
-//     });
 
-// /**
-//  * @swagger
-//  * /api/{id}:
-//  *  get:
-//  *      summary: To get the data from mysql 
-//  *      description: This api is used to fetch data from mysql
-//  *      parameters: 
-//  *          - in: path
-//  *            name: id
-//  *            requires: true
-//  *            description: Numeric Id required
-//  *            schema: 
-//  *              type: integer
-//  *      responses: 
-//  *          200:
-//  *              description: This api is used to fetch data from mysql
-//  *              content: 
-//  *                  application/json:
-//  *                      schema:
-//  *                          type: array
-//  *                          items: 
-//  *                              $ref: '#components/schemas/Book'
-//  */ 
-//     app.get('/api/:id',(req,res)=>{
-//         var d=data.find(c=>c.id===parseInt(req.params.id))
-//         res.send(d)  
-//     });
-// /**
-//  * @swagger
-//  * /api:
-//  *  post:
-//  *      summary: Used to insert data to mysql
-//  *      description: This api is used to fetch data from mysql
-//  *      requestBody: 
-//  *          required: true
-//  *          content:
-//  *              application/json:
-//  *                  schema:
-//  *                      $ref: '#components/schemas/Book'
-//  *      responses: 
-//  *          200:
-//  *              description: Created
-//  */
-// app.post('/api',(req,res)=>{
-//     const{error,value}=schema.validate(req.body)
-// if(error)
-// {
-// console.log(error);
-// return res.send(error.message)
-// }
-//     console.log(req.body);
-//     data.push(req.body);
-//     res.sendStatus(201)
-// });
+app.get('/',(req,res)=>{
+   res.send(`Hello vinnu`)
+});
+var data=require('./express/data')
 
-// /**
-//  * @swagger
-//  * /api/{name}:
-//  *  delete:
-//  *      summary: Used to delete data to mysql
-//  *      description: This api is used to delete data from mysql
-//  *      parameters: 
-//  *          - in: path
-//  *            name: name
-//  *            requires: true
-//  *            description: Numeric Id required
-//  *            schema: 
-//  *              type: string
-//  *      requestBody: 
-//  *          required: true
-//  *          content:
-//  *              application/json:
-//  *                  schema:
-//  *                      $ref: '#components/schemas/Book'
-//  *      responses: 
-//  *          200:
-//  *              description: Deleted
-//  */
-// app.delete('/api/:name',(req,res)=>{
-//   var d=data.find(c=>c.name===req.params.name);
-//   const index=data.indexOf(d);
-//   data.splice(index,1);
-//   res.send(d);
-// });
 
-// /**
-//  * @swagger
-//  * /api/data/{id}:
-//  *  put:
-//  *      summary: Used to update data to mysql
-//  *      description: This api is used to fetch data from mysql
-//  *      parameters: 
-//  *          - in: path
-//  *            name: id
-//  *            requires: true
-//  *            description: Numeric Id required
-//  *            schema: 
-//  *              type: integer
-//  *      requestBody: 
-//  *          required: true
-//  *          content:
-//  *              application/json:
-//  *                  schema:
-//  *                      $ref: '#components/schemas/Book'
-//  *      responses: 
-//  *          200:
-//  *              description: Update
-//  *              content: 
-//  *                  application/json:
-//  *                      schema:
-//  *                          type: array
-//  *                          items: 
-//  *                              $ref: '#components/schemas/Book'
-//  */
-// app.put('/api/data/:id',(req, res)=>
-// {
-// var d=data.find(c=>c.id===parseInt(req.params.id))
-// d.language = req.body.language;
-// d.name=req.body.name;
-// res.send(d);
+/**
+ * @swagger
+ *  components:
+ *      schemas:
+ *          Book:
+ *              type: object
+ *              properties:
+ *                  id:
+ *                      type: integer
+ *                  name:
+ *                      type: string
+ *                  age:
+ *                      type: integer
+ *                  language:
+ *                      type: array
+ */
 
-// })
-// app.put('/api/:name',(req,res)=>{
-//     var d=data.find(c=>c.name===req.params.name);
-//     d.name=req.body.name;
-//     res.send(d);
+/**
+ * @swagger
+ * /api:
+ *  get:
+ *      summary: To get the data from mysql 
+ *      description: This api is used to fetch data from mysql
+ *      responses: 
+ *          200:
+ *              description: This api is used to fetch data from mysql
+ *              content: 
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/Book'
+ */
+app.get('/api',(req,res)=>{
+    res.send(data);
+    // var traininObj={
+    //     order_Id:10,
+    //     Amount:200,
+    //     active:true
+    // }
+    // res.send(traininObj)
+    });
+
+/**
+ * @swagger
+ * /api/{id}:
+ *  get:
+ *      summary: To get the data from mysql 
+ *      description: This api is used to fetch data from mysql
+ *      parameters: 
+ *          - in: path
+ *            name: id
+ *            requires: true
+ *            description: Numeric Id required
+ *            schema: 
+ *              type: integer
+ *      responses: 
+ *          200:
+ *              description: This api is used to fetch data from mysql
+ *              content: 
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/Book'
+ */ 
+    app.get('/api/:id',(req,res)=>{
+        var d=data.find(c=>c.id===parseInt(req.params.id))
+        res.send(d)  
+    });
+/**
+ * @swagger
+ * /api:
+ *  post:
+ *      summary: Used to insert data to mysql
+ *      description: This api is used to fetch data from mysql
+ *      requestBody: 
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#components/schemas/Book'
+ *      responses: 
+ *          200:
+ *              description: Created
+ */
+app.post('/api',(req,res)=>{
+    const{error,value}=schema.validate(req.body)
+if(error)
+{
+console.log(error);
+return res.send(error.message)
+}
+    console.log(req.body);
+    data.push(req.body);
+    res.sendStatus(201)
+});
+
+/**
+ * @swagger
+ * /api/{name}:
+ *  delete:
+ *      summary: Used to delete data to mysql
+ *      description: This api is used to delete data from mysql
+ *      parameters: 
+ *          - in: path
+ *            name: name
+ *            requires: true
+ *            description: Numeric Id required
+ *            schema: 
+ *              type: string
+ *      requestBody: 
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#components/schemas/Book'
+ *      responses: 
+ *          200:
+ *              description: Deleted
+ */
+app.delete('/api/:name',(req,res)=>{
+  var d=data.find(c=>c.name===req.params.name);
+  const index=data.indexOf(d);
+  data.splice(index,1);
+  res.send(d);
+});
+
+/**
+ * @swagger
+ * /api/data/{id}:
+ *  put:
+ *      summary: Used to update data to mysql
+ *      description: This api is used to fetch data from mysql
+ *      parameters: 
+ *          - in: path
+ *            name: id
+ *            requires: true
+ *            description: Numeric Id required
+ *            schema: 
+ *              type: integer
+ *      requestBody: 
+ *          required: true
+ *          content:
+ *              application/json:
+ *                  schema:
+ *                      $ref: '#components/schemas/Book'
+ *      responses: 
+ *          200:
+ *              description: Update
+ *              content: 
+ *                  application/json:
+ *                      schema:
+ *                          type: array
+ *                          items: 
+ *                              $ref: '#components/schemas/Book'
+ */
+app.put('/api/data/:id',(req, res)=>
+{
+var d=data.find(c=>c.id===parseInt(req.params.id))
+d.language = req.body.language;
+d.name=req.body.name;
+res.send(d);
+
+})
+app.put('/api/:name',(req,res)=>{
+    var d=data.find(c=>c.name===req.params.name);
+    d.name=req.body.name;
+    res.send(d);
     
-// })
+})
 // app.listen(8080,()=>{console.log('Connected');})
-// app.listen(8080,'172.17.12.39',()=>console.log('listening on http://172.17.12.39:3000/api'))
+app.listen(8080,'172.17.12.39',()=>console.log('listening on http://172.17.12.39:8080/api'))
 
 
 
