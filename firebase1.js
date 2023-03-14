@@ -22,10 +22,12 @@
 
 
 
-
+//Require the express 
 const express=require('express');
+//Require the multer
 const multer= require('multer');
 const app=express();
+//Require the firebase
 const firebase=require('firebase/app');
 const {getStorage, ref, uploadBytes}=require('firebase/storage');
 
@@ -39,15 +41,13 @@ const firebaseConfig = {
       measurementId: "G-M5CBS872D3"
     };
 
-firebase.initializeApp(firebaseConfig)
+//Intialize the configurations
+firebase.initializeApp(firebaseConfig);
 const storage= getStorage()
 
 const upload= multer({storage: multer.memoryStorage()})
 
-app.get('/',(req,res)=>
-{
-res.json("firebase storage")
-})
+
 app.post("/",upload.single('filename'), (req,res)=>
 {
 const storageref= ref(storage, req.file.originalname)
@@ -58,4 +58,4 @@ console.log("file upload");
 // console.log(req.file);
 res.send("Inserted successfully.................")
 })
-app.listen(5000)
+app.listen(6000,()=>console.log("Server working at port 6000"));

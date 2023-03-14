@@ -16,7 +16,6 @@ res.send(empdata);
 {
 res.send("Their is no data")
 })
-
 })
 app.post("/post",(req,res)=>
 {
@@ -30,28 +29,28 @@ res.send(empdata);
 res.send("Their is no data")
 })
 })
-app.put("/put",(req,res)=>
-{
-database.updateEmployee(req.body.title,req.body.author,req.body.cost,req.body.id,)
-.then(()=>
-{
-res.send(req.body);
-})
-.catch(()=>
-{
-res.send("Their is no data")
-})
-})
-app.delete("/delete",(req,res)=>
-{
+// app.put("/put",(req,res)=>
+// {
+// database.updateEmployee(req.body.title,req.body.author,req.body.cost,req.body.id,)
+// .then(()=>
+// {
+// res.send(req.body);
+// })
+// .catch(()=>
+// {
+// res.send("Their is no data")
+// })
+// })
+// app.delete("/delete",(req,res)=>
+// {
 
-database.deleteEmployee(req.body.id)
-.then((empdata)=>
-{
-res.send(empdata);
-})
-.catch(()=>
-{
-res.send("Their is no data")
-})
-})
+// database.deleteEmployee(req.body.id)
+// .then((empdata)=>
+// {
+// res.send(empdata);
+// })
+// .catch(()=>
+// {
+// res.send("Their is no data")
+// })
+// })

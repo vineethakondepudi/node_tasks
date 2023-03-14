@@ -1,19 +1,19 @@
 // const {createPool}=require('mysql2');
 
 const mysql=require('mysql');
-// const dotnav =require('dotenv');
-// dotnav.config();
-// const connection=createPool({
-    // host: process.env.HOST,
-    // user:process.env.USER,
-    // password:process.env.PASSWORD,
-    // database:process.env.DB
-const connection=mysql.createConnection({
-    // host:process.env.HOST,
-    host:"172.17.15.100",
-    user:"itguser10",
-    password:"miracle@10",
-    database:"employedata"
+const dotnav =require('dotenv');
+dotnav.config();
+const connection=createPool({
+    host: process.env.HOST,
+    user:process.env.USER,
+    password:process.env.PASSWORD,
+//     database:process.env.DB
+// const connection=mysql.createConnection({
+//     // host:process.env.HOST,
+//     host:"172.17.15.100",
+//     user:"itguser10",
+//     password:"miracle@10",
+//     database:"employedata"
 })
 connection.connect((err)=>
 {

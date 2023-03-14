@@ -27,6 +27,7 @@ reject(err)
 }
 else{
 resolve(res);
+console.log(res)
 }
 })
 })
@@ -92,11 +93,7 @@ resolve(res);
 // })
 // })
 // }
-getEmployee();
-addEmployee();
-updateEmployee();
-deleteEmployee();
-// Deletetable();
 
-// pool.end();
+
+
 module.exports={getEmployee,addEmployee,updateEmployee,deleteEmployee}
