@@ -13,7 +13,7 @@ text:'my api'
 app.post('/api/login',(req,res)=>{
 //auth user
 const userqq=id=3;
-const token=jwt.sign({userqq}, 'my_secret_key',{expiresIn:"40sec"});
+const token=jwt.sign({userqq}, 'my_secret_key',{expiresIn:"60sec"});
 res.json({
 token:token
 });
