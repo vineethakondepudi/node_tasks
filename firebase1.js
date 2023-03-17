@@ -30,7 +30,7 @@ const app=express();
 var fs = require('fs')
 //Require the firebase
 const firebase=require('firebase/app');
-const {getStorage, ref, uploadBytes,  getDownloadURL}=require('firebase/storage');
+const {getStorage, ref, uploadBytes,  getDownloadURL, deleteObject}=require('firebase/storage');
 
 const firebaseConfig = {
       apiKey: "AIzaSyAAUwtBxwBeEUj-k3zx-dCGEuJdZjP93zA",
@@ -47,20 +47,23 @@ firebase.initializeApp(firebaseConfig);
 const storage= getStorage()
 
 const upload= multer({storage: multer.memoryStorage()})
+
+
 app.get('/download', async function(req, res) {
   try {
     const fileRef = ref(storage, req.query.path);
     const url = await getDownloadURL(fileRef);
     // res.redirect(url);
-    // res.send(url);
-    fs.writeFile('text3.txt',`${url}`,(err)=>{
-        if(err){
-          console.log(err);
-        }  
-        else{
+    res.send(url);
+    // fs.writeFile('text3.txt',url,(err)=>{
+        // if(err){
+          // console.log(err);
+        // }  
+        // else{
+          // res.send("Download successfully.................")
           console.log("Download successfully on text3 file");
-        }
-    })
+        // }
+    // })
   } catch (error) {
     console.error(error);
     res.status(500).send('Error downloading file');
@@ -76,5 +79,19 @@ console.log("File uploaded successfully");
 })
 // console.log(req.file);
 res.send("Inserted successfully.................")
-})
+});
+
+
+app.delete('/delete', async function(req, res) {
+  try {
+    const fileRef = ref(storage, req.query.path);
+    await deleteObject(fileRef);
+    res.send('File deleted successfully');
+    console.log('File deleted successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error deleting file');
+  }
+});
+
 app.listen(6000,()=>console.log("Server working at port 6000"));
