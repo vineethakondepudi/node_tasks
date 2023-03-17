@@ -94,4 +94,17 @@ app.delete('/delete', async function(req, res) {
   }
 });
 
+
+app.put('/update/:path', async function(req, res) {
+  console.log(req.body); // add this line to debug the request body
+  try {
+    const fileRef = ref(storage, req.params.path);
+    await uploadBytes(fileRef, req.body.data);
+    res.send('File updated successfully');
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error updating file');
+  }
+});
+
 app.listen(6000,()=>console.log("Server working at port 6000"));
