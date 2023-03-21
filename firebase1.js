@@ -95,10 +95,10 @@ app.delete('/delete', async function(req, res) {
 });
 
 
-app.put('/update/:path', async function(req, res) {
+app.put('/update', async function(req, res) {
   console.log(req.body); // add this line to debug the request body
   try {
-    const fileRef = ref(storage, req.params.path);
+    const fileRef = ref(storage, req.query.path);
     await uploadBytes(fileRef, req.body.data);
     res.send('File updated successfully');
   } catch (error) {
